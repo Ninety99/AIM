@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerToggleSprintEvent;
 import org.bukkit.inventory.Inventory;
 
 import me.NinetyNine.aim.utils.AIMUtils;
@@ -25,11 +26,29 @@ public class AIMHandler implements Listener {
 			e.setCancelled(true);
 			for (Player all : Bukkit.getServer().getOnlinePlayers()) {
 				if (all.hasPermission("gcbanz.ban")) {
+					AIMUtils.sendPlayerMessage(all, "&5" + player.getName()
+							+ " &c might be using InventoryMove! &6(Might be false if player got hit)");
+				} else
+					return;
+			}
+		} else
+			return;
+	}
+
+	@EventHandler
+	public void onPlayerSprint(PlayerToggleSprintEvent e) {
+		Player player = e.getPlayer();
+		Inventory inventory = player.getInventory();
+		if (playerInOpen.containsKey(player) && playerInOpen.containsValue(inventory)) {
+			e.setCancelled(true);
+			for (Player all : Bukkit.getServer().getOnlinePlayers()) {
+				if (all.hasPermission("gcbanz.ban")) {
 					AIMUtils.sendPlayerMessage(all, "&5" + player.getName() + " &c might be using InventoryMove!");
 				} else
 					return;
 			}
-		}
+		} else
+			return;
 	}
 
 	@EventHandler

@@ -8,6 +8,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.NinetyNine.aim.commands.AIMCommands;
 import me.NinetyNine.aim.eventhandler.AIMHandler;
 import me.NinetyNine.aim.utils.AIMUtils;
 
@@ -21,6 +22,8 @@ public class AIM extends JavaPlugin {
 		
 		registerListeners();
 		registerStatics();
+		registerCommands();
+		
 		AIMUtils.sendConsoleMessage("Enabled!");
 	}
 	
@@ -32,10 +35,15 @@ public class AIM extends JavaPlugin {
 	private void registerListeners() {
 		PluginManager pm = Bukkit.getServer().getPluginManager();
 		pm.registerEvents(new AIMUtils(), this);
+		pm.registerEvents(new AIMCommands(), this);
 		pm.registerEvents(new AIMHandler(), this);
 	}
 	
 	private void registerStatics() {
 		AIMHandler.playerInOpen = new HashMap<Player, Inventory>();
+	}
+	
+	private void registerCommands() {
+		getCommand("aim").setExecutor(new AIMCommands());
 	}
 }
