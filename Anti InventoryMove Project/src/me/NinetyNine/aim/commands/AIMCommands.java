@@ -27,7 +27,7 @@ public class AIMCommands implements Listener, CommandExecutor {
 					if (target.isOnline()) {
 						AIMUtils.openPlayerInventory(target);
 						AIMUtils.sendPlayerMessage(player, "&5" + target.getName()
-								+ " &cis being checked! &6(This opens their inventory, if player keeps moving, it means they're using the InventoryMove hack!)");
+								+ " &cis being checked! &7(This opens their inventory, if player keeps moving, it means they're using the InventoryMove hack!)");
 						return true;
 					} else {
 						AIMUtils.sendPlayerMessage(player, "&cPlayer is not online/cannot find player");

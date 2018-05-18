@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import me.NinetyNine.aim.commands.AIMCommands;
 import me.NinetyNine.aim.eventhandler.AIMHandler;
@@ -41,6 +42,8 @@ public class AIM extends JavaPlugin {
 	
 	private void registerStatics() {
 		AIMHandler.playerInOpen = new HashMap<Player, Inventory>();
+		AIMHandler.time = new HashMap<Player, Integer>();
+		AIMHandler.task = new HashMap<Player, BukkitRunnable>();
 	}
 	
 	private void registerCommands() {

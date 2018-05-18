@@ -5,7 +5,7 @@ import static org.bukkit.ChatColor.translateAlternateColorCodes;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
-import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.Inventory;
 
 public class AIMUtils implements Listener {
 	
@@ -20,7 +20,7 @@ public class AIMUtils implements Listener {
 	}
 	
 	public static void openPlayerInventory(Player player) {
-		PlayerInventory playerinv = player.getInventory();
+		Inventory playerinv = player.getInventory();
 		player.openInventory(playerinv);
 	}
 }
