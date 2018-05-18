@@ -59,6 +59,10 @@ public class AIMHandler implements Listener {
 	public void onInventoryOpen(InventoryOpenEvent e) {
 		Player player = (Player) e.getPlayer();
 		Inventory inventory = e.getInventory();
+		setCheck(player, inventory);
+	}
+
+	private static void setCheck(Player player, Inventory inventory) {
 		if (!time.containsKey(player) && !task.containsKey(player) && !playerInOpen.containsKey(player)) {
 			time.put(player, 1);
 			task.put(player, new BukkitRunnable() {

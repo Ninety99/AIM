@@ -16,36 +16,36 @@ import me.NinetyNine.aim.utils.AIMUtils;
 public class AIM extends JavaPlugin {
 
 	public static AIM plugin;
-	
+
 	@Override
 	public void onEnable() {
 		plugin = this;
-		
+
 		registerListeners();
 		registerStatics();
 		registerCommands();
-		
+
 		AIMUtils.sendConsoleMessage("Enabled!");
 	}
-	
+
 	@Override
 	public void onDisable() {
 		AIMUtils.sendConsoleMessage("Disabled!");
 	}
-	
+
 	private void registerListeners() {
 		PluginManager pm = Bukkit.getServer().getPluginManager();
 		pm.registerEvents(new AIMUtils(), this);
 		pm.registerEvents(new AIMCommands(), this);
 		pm.registerEvents(new AIMHandler(), this);
 	}
-	
+
 	private void registerStatics() {
 		AIMHandler.playerInOpen = new HashMap<Player, Inventory>();
 		AIMHandler.time = new HashMap<Player, Integer>();
 		AIMHandler.task = new HashMap<Player, BukkitRunnable>();
 	}
-	
+
 	private void registerCommands() {
 		getCommand("aim").setExecutor(new AIMCommands());
 	}
