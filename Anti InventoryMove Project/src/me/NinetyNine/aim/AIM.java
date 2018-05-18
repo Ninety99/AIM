@@ -21,6 +21,12 @@ public class AIM extends JavaPlugin {
 		
 		registerListeners();
 		registerStatics();
+		AIMUtils.sendConsoleMessage("Enabled!");
+	}
+	
+	@Override
+	public void onDisable() {
+		AIMUtils.sendConsoleMessage("Disabled!");
 	}
 	
 	private void registerListeners() {
